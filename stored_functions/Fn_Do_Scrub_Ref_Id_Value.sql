@@ -4,9 +4,11 @@
  * auto-increment range (10001-4294967295). Anything else returns NULL.
  *
  * Why it exists:
- *   Reference/lookup tables get their own ID range, separate from data
- *   tables, so a data ID pasted into a ref-ID argument fails validation
- *   instead of resolving to a random lookup row. Like its sibling, it
+ *   Reference/lookup IDs start much lower (10001+) than data IDs
+ *   (1000000001+), so small lookup IDs that the data-ID scrub rejects are
+ *   accepted here. Both scrubs share the same 4294967295 ceiling, so the
+ *   separation is one-directional: a data-range ID also passes this check,
+ *   but a low ref ID does not pass the data-ID check. Like its sibling, it
  *   rejects bad input outright rather than trusting CAST's wrap/truncate
  *   behavior.
  *
