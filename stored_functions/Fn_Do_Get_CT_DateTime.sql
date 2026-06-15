@@ -11,8 +11,6 @@
  * Notes:
  *   - Needs the MySQL time-zone tables loaded (CONVERT_TZ with named zones).
  *
- * Used by: Fn_Get_Page_Data / App_Get_Page_Data (execution metadata).
- *
  * Example:
  *   SELECT Fn_Do_Get_CT_DateTime();  -- '2024-03-13 14:33:19'
  */

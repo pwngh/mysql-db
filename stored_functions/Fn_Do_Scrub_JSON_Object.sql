@@ -11,8 +11,6 @@
  *   others. Round-tripping through the JSON type is what does the
  *   normalizing.
  *
- * Used by: Fn_Get_Page_Data (the result-scrub step of the page-data pattern).
- *
  * Example:
  *   SELECT Fn_Do_Scrub_JSON_Object('{"v_User_Account_Id": "1000000001"}');
  */

@@ -10,11 +10,6 @@
  *   ID surfaces as a structured error at the API layer rather than as a query
  *   against the wrong row.
  *
- * Relationships:
- *   - Used by: Fn_Get_Page_Data (and any Fn_Get_* taking a data-record ID)
- *   - See also: Fn_Do_Scrub_Ref_Id_Value, the same check for the
- *     reference-table range (10001+)
- *
  * Example:
  *   SELECT Fn_Do_Scrub_Data_Id_Value('1000000001');  -- '1000000001'
  */

@@ -10,8 +10,6 @@
  *   later in the string are dropped rather than allowed to scramble the
  *   value, and empty input yields NULL instead of a fake 0.00.
  *
- * Used by: Fn_Do_Format_Number_To_Currency_Display and its _Short variant.
- *
  * Example:
  *   SELECT Fn_Do_Scrub_Decimal_Money_Value('$1,234.5');  -- '1234.50'
  */

@@ -14,8 +14,6 @@
  *     '...19:33:19.123456' both round-trip without padding or loss.
  *   - Input is truncated to 30 characters before validation.
  *
- * Used by: the Fn_Do_Format_DateTime_* display functions.
- *
  * Example:
  *   SELECT Fn_Do_Scrub_DateTime_Value('2024-03-13 19:33:19');  -- '2024-03-13 19:33:19'
  */

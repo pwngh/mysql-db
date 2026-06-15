@@ -9,11 +9,8 @@
  *   values MySQL genuinely accepts as dates. DAYNAME() is the validity
  *   probe - it returns NULL for any invalid or zero date.
  *
- * Relationships:
- *   - Used by: the Fn_Do_Format_Date_* display functions and the nightly
- *     cleanup event
- *   - See also: Fn_Do_Convert_Date_Format_From_Display_To_Internal for
- *     parsing user-entered display dates
+ * - See also: Fn_Do_Convert_Date_Format_From_Display_To_Internal for
+ *   parsing user-entered display dates
  *
  * Example:
  *   SELECT Fn_Do_Scrub_Date_Value('2024-03-13');  -- '2024-03-13'

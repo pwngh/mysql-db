@@ -9,9 +9,6 @@
  *   where the weekday would be noise. The short As-of and time-zone-prefix
  *   builders compose on top of it.
  *
- * Used by: Fn_Do_As_Of_Display_String_Value_Min,
- *   Fn_Do_Format_DateTime_Time_Zone_Prefix_Display_To_Min.
- *
  * Example:
  *   SELECT Fn_Do_Format_DateTime_Standard_Display_Short_To_Min('2024-03-13 19:33:19');  -- 'Mar 13, 2024, 7:33 pm'
  */

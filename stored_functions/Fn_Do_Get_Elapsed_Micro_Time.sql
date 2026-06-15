@@ -9,8 +9,6 @@
  *   are visible from the client side without server profiling. This builds
  *   that value; the never-NULL contract keeps metadata assembly simple.
  *
- * Used by: Fn_Get_Page_Data / App_Get_Page_Data (execution metadata).
- *
  * Example:
  *   SELECT Fn_Do_Get_Elapsed_Micro_Time(v_Start_UTC_DateTime, NULL);  -- elapsed since start
  */

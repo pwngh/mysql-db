@@ -21,8 +21,6 @@
  *   failures and transient locking are handled inside the DB layer, so
  *   every client gets the same behavior without duplicating it.
  *
- * Used by: App_Get_Page_Data, the procedure clients actually CALL.
- *
  * Example:
  *   SELECT Fn_Get_Page_Data(JSON_OBJECT('v_User_Account_Id', '1000000001'));
  */

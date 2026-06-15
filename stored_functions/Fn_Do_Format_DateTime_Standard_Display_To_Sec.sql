@@ -9,8 +9,6 @@
  *   pattern uses it to stamp Execution_CT_DateTime_Display in every result
  *   and error payload, where second precision earns its keep.
  *
- * Used by: Fn_Get_Page_Data / App_Get_Page_Data (execution metadata).
- *
  * Example:
  *   SELECT Fn_Do_Format_DateTime_Standard_Display_To_Sec('2024-03-13 19:33:19');  -- 'Wed, 3-13-2024, 7:33:19 pm'
  */

@@ -15,9 +15,6 @@
  *     a valid IANA name missing from the alias map should still reach
  *     CONVERT_TZ.
  *
- * Used by: the As-of display builders and
- *   Fn_Do_Format_DateTime_Time_Zone_Prefix_Display_To_Min.
- *
  * Example:
  *   SELECT Fn_Do_Scrub_Time_Zone_Value('ET');  -- 'America/New_York'
  */
