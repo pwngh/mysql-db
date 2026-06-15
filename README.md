@@ -4,53 +4,49 @@ A reusable library of MySQL 8.0+ stored functions, procedures, triggers, example
 
 ## Execution model
 
-All scripts are designed to be **idempotent**:
+All scripts are designed to be **idempotent and safe to re-run**:
 
 - Objects are created using `DROP ... IF EXISTS` followed by `CREATE`
-- Safe to re-run for upgrades or redeployment
-- No manual migration tracking required
+- Re-executing is safe and functions as a lightweight upgrade mechanism
+- Routine bodies contain semicolons; use a client that supports multi-statement execution (e.g. `MySQL Workbench`, `DataGrip`) or a delimiter-safe CLI wrapper
 
-Routine bodies contain semicolons. Use a SQL client that supports multi-statement execution like `MySQL Workbench`, `Navicat for MySQL`, or `DataGrip`, or a CLI wrapper when using `mysql`.
+## Environment requirements
 
-## Deployment requirements
+The scripts assume a standard MySQL 8.0+ environment. Some features rely on global server configuration or system tables that may not be enabled by default.
 
-The scripts assume a standard MySQL 8.0+ environment and may require configuration adjustments.
+- **Definers (security context for routines)**
+  - All routines, triggers, and events are created with `DEFINER='admin'@'%'`
+  - This defines the execution security context for database objects
+  - If your server uses stricter user policies, change or remove the definer to match
 
-**Definers**
-- All routines, triggers, and events use `DEFINER='admin'@'%'`
-- Modify or remove to match your server users
+- **Database schema name**
+  - The scripts use `mysql_db` as a placeholder schema
+  - This is intentional to make the library portable across environments
+  - Replace it before deployment
 
-**Database name**
-- Example DDL uses `mysql_db`
-- Replace with your target schema
+- **Binary logging restrictions**
+  - MySQL may block function creation under binary logging in certain configurations
+  - If this occurs, enable trusted function creation:
 
-**Binary logging**
-- Function creation may require:
+    ```sql
+    SET GLOBAL log_bin_trust_function_creators = 1;
+    ```
+  
+  - This relaxes safety checks for deterministic functions
 
-  ```sql
-  SET GLOBAL log_bin_trust_function_creators = 1;
-  ```
+- **Time zone support**
+  - Functions using `CONVERT_TZ()` depend on MySQL time zone tables
+  - Without them, conversions will return `NULL`
+  - These tables must be loaded into the server for accurate timezone handling
 
-**Time zone support**
-  - `CONVERT_TZ()` requires MySQL time zone tables to be loaded
+- **Event scheduler**
+  - Scheduled events require the MySQL event scheduler to be enabled
+  - Without it, event definitions will exist but will not execute
 
-**Event scheduler**
+    ```sql
+    SET GLOBAL event_scheduler = ON;
+    ```
 
-- Required for scheduled events:
-
-  ```sql
-  SET GLOBAL event_scheduler = ON;
-  ```
-
-
-## Installation
-
-Apply folders to your database in dependency order:
-
-1. `stored_functions/`
-2. `tables/`
-3. `stored_procedures/`
-4. `events/`
 
 ## Functions
 
