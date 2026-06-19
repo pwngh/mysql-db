@@ -21,6 +21,6 @@ BEGIN
 DECLARE v_Key_Min INT UNSIGNED DEFAULT '10000' ;
 DECLARE v_Key_Max INT UNSIGNED DEFAULT '4294967295' ;
 
-RETURN ROUND(FLOOR(v_Key_Min + (RAND() * (v_Key_Max - v_Key_Min))) ,0) ;
+RETURN FLOOR(v_Key_Min + (RAND() * (v_Key_Max - v_Key_Min))) ;
 
 END
